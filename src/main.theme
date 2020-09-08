@@ -1,25 +1,34 @@
+# Status bar
+set-option -g status-position top
+
 # Status update interval
 set -g status-interval 1
 
 # Basic status bar colors
-set -g status-style fg=cyan,bg=brightblack
+set -g status-style fg=blue,bg=brightblack
 
 # Left side of status bar
-set -g status-left-style bg=green,bg=brightblack
+set -g status-left-style fg=blue,bg=brightblack
 set -g status-left-length 40
 
-set -g status-left "#S #[fg=brightgreen]#{@separator_session_name} #[fg=yellow]#I #[fg=white]#{@main_separator} #[fg=cyan]#P"
+# set -g status-left " 🔥 [#S] #[fg=brightgreen]#{@separator_session_name} #[fg=yellow]#I #[fg=white]#{@main_separator} #[fg=cyan]#P "
+set -g status-left " [#S] 🍂 #[fg=yellow]#I #[fg=white]#{@main_separator} #[fg=cyan]#P "
 
 # Right side of status bar
 set -g status-right-style fg=cyan,bg=brightblack
 set -g status-right-length 40
 
-# Window status
-set -g window-status-format " #I:#W#F "
-set -g window-status-current-format " #I:#W#F "
+# needed: go get -u github.com/arl/gitmux
+# set -g status-right ' #(gitmux "#{pane_current_path}") '
+set -g status-right '#{prefix_highlight} #[fg=green]%a %d/%m #[fg=white]#{@main_separator} #[fg=yellow]%H:%M '
 
-# Current window status
-set -g window-status-current-style fg=black,bg=red
+# Window status
+set -g window-status-format "  #I:#W#F  "
+set -g window-status-current-format "  #I:#W#F  "
+
+# Window style
+set -g window-status-style fg=white,bg=brightblack
+set -g window-status-current-style fg=black,bg=white
 
 # Window with activity status
 set -g window-status-activity-style fg=brightblack,bg=yellow
@@ -28,7 +37,7 @@ set -g window-status-activity-style fg=brightblack,bg=yellow
 set -g window-status-separator ""
 
 # Window status alignment
-set -g status-justify centre
+set -g status-justify left
 
 # Pane border
 set -g pane-border-style fg=brightblack,bg=default
@@ -50,3 +59,4 @@ set -g message-command-style fg=default,bg=default
 
 # Mode
 set -g mode-style fg=default,bg=red
+
